@@ -1,15 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "¡Servidor Go corriendo!")
-	})
+const ruta_media = "./static"
 
-	fmt.Println("Servidor iniciado en http://localhost:8080")
+func main() {
+	fs := http.FileServer(http.Dir(ruta_media))
+	http.Handle("/", fs)
 	http.ListenAndServe(":8080", nil)
 }

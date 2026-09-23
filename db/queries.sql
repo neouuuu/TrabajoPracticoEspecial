@@ -16,6 +16,14 @@ WHERE id = $1 LIMIT 1;
 SELECT * FROM eventos
 ORDER BY fecha ASC;
 
+-- name: EditarEvento :one
+UPDATE eventos
+SET nombre = $2,
+    capacidad = $3,
+    fecha = $4
+WHERE id = $1
+RETURNING *;
+
 -- name: ReservarTicket :one
 INSERT INTO tickets (id_usuario, id_evento)
 VALUES ($1, $2)

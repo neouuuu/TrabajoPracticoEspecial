@@ -17,7 +17,7 @@ test:
 	done
 
 	@echo "=== 5. Ejecutando la suite de pruebas ==="
-	go test -v 
+	go test -v ./tests/...
 
 	@echo "=== 6. Limpieza posterior (destruyendo contenedor) ==="
 	docker compose down -v

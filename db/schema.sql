@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS tickets;
+DROP TABLE IF EXISTS eventos;
+DROP TABLE IF EXISTS usuarios;
+
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,

@@ -7,3 +7,6 @@
 *.out
 vendor/
 TrabajoPracticoEspecial
+
+# Codigo Go generado automaticamente por sqlc (se regenera con `sqlc generate` / `make test`)
+db/sqlc/

@@ -1,4 +1,3 @@
-// Elementos del DOM
 const formUsuario = document.querySelector("#form-usuario");
 const formEvento = document.querySelector("#form-evento");
 const usuarioId = document.querySelector("#usuario-id");
@@ -6,30 +5,40 @@ const eventoId = document.querySelector("#evento-id");
 const listaEventos = document.querySelector("#lista-eventos");
 const listaTickets = document.querySelector("#lista-tickets");
 
-// Hace el fetch, muestra el error si falla y devuelve el JSON
+//Función centralizada (wrapper) para hacer peticiones HTTP a la API de Go.
 async function pedir(url, metodo = "GET", datos) {
+    
     const res = await fetch(url, {
         method: metodo,
         headers: { "Content-Type": "application/json" },
         body: datos ? JSON.stringify(datos) : undefined,
     });
+
     if (!res.ok) {
-        alert(await res.text());
+        const mensajeError = await res.text();
+        alert(mensajeError);
         return null;
     }
-    return res.status === 204 ? true : res.json();
+
+    return res.status === 204 ? true : await res.json();
 }
 
-// GET /eventos
 async function cargarEventos() {
+    // OBTENER LA LISTA DE EVENTOS:
     const eventos = await pedir("/eventos");
+
     if (!eventos) return;
 
     listaEventos.innerHTML = "";
+
+    // RECORRER CADA EVENTO 
     for (const ev of eventos) {
-        // GET /eventos/{id}/reservas
+        
+        // CONSULTA CANTIDAD DE RESERVAS
         const r = await pedir(`/eventos/${ev.ID}/reservas`);
+    
         const reservas = r ? r.total_reservas : "?";
+        
         listaEventos.innerHTML += `
             <li class="ticket">
                 <div class="ticket-cuerpo">

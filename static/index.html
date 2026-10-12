@@ -4,19 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IAccess</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>IAccess, sistema online de venta de tickets digitales para eventos.</h1>
-    <p>IAccess es una aplicacion web de ventas de tickets digitales para eventos.
-        Va a tener 3 elementos, usuarios, tickets y eventos.
-        En evento se guarda su id, la fecha, la cantidad de entradas vendidas y la cantidad maxima de entradas.
-        En ticket se guarda su id y para que evento y de que usuario es.
-        En usuario se guarda su id.
-    </p>
-    <a href="/falopa.html">aver</a>
+    <header class="cabecera">
+        <h1>IAccess</h1>
+        <p>Reservá tu entrada para los próximos eventos.</p>
+    </header>
 
+    <main class="layout">
 
+        <aside class="columna-lateral">
+            <section class="panel">
+                <h2>Usuario</h2>
+                <form id="form-usuario" class="formulario">
+                    <label for="usuario-nombre">Nombre</label>
+                    <input type="text" id="usuario-nombre" required>
 
+                    <label for="usuario-email">Email</label>
+                    <input type="text" id="usuario-email" required>
+
+                    <button type="submit" class="btn btn-primario">Crear usuario</button>
+                </form>
+
+                <div class="formulario formulario-inline">
+                    <label for="usuario-id">Tu ID de usuario</label>
+                    <input type="number" id="usuario-id" min="1">
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 id="evento-titulo">Nuevo evento</h2>
+                <form id="form-evento" class="formulario">
+                    <input type="hidden" id="evento-id">
+                    <label for="evento-nombre">Nombre</label>
+                    <input type="text" id="evento-nombre" required>
+
+                    <label for="evento-capacidad">Capacidad</label>
+                    <input type="number" id="evento-capacidad" min="1" required>
+
+                    <label for="evento-fecha">Fecha y hora</label>
+                    <input type="datetime-local" id="evento-fecha" required>
+
+                    <button type="submit" id="btn-evento" class="btn btn-primario">Crear evento</button>
+                </form>
+            </section>
+        </aside>
+
+        <div class="columna-principal">
+            <section class="panel">
+                <h2>Eventos</h2>
+                <ul id="lista-eventos" class="lista"></ul>
+            </section>
+
+            <section class="panel">
+                <h2>Mis tickets</h2>
+                <button type="button" id="btn-ver-tickets" class="btn btn-secundario">Ver mis tickets</button>
+                <ul id="lista-tickets" class="lista lista-compacta"></ul>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>

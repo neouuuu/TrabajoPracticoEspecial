@@ -24,6 +24,9 @@ WORKDIR /app
 # Nos quedamos solo con el binario compilado.
 COPY --from=builder /app/server .
 
+# El frontend (HTML/CSS/JS) también tiene que estar en la imagen, porque el servidor lo sirve desde ./static.
+COPY --from=builder /app/static ./static
+
 # Escuchando en el puerto 8080.
 EXPOSE 8080
 

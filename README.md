@@ -15,7 +15,6 @@ El proyecto se organiza en los siguientes archivos y directorios:
 - `db/queries.sql`: Consultas SQL para las operaciones CRUD.
 - `sqlc.yaml`: Archivo de configuración de `sqlc`.
 - `db/sqlc/`: Código Go autogenerado por `sqlc`.
-- `handlers/`: Handlers HTTP que implementan los **endpoints REST** de la API.
 - `db_test.go`: Pruebas usando el paquete `testing` de Go.
 - `Dockerfile`: Archivo de configuración para compilar y empaquetar la aplicación en Go.
 - `docker-compose.yml`: Configuración para orquestar los contenedores de la aplicación Go y la base de datos PostgreSQL.
